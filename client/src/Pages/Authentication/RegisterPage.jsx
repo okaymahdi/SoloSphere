@@ -32,7 +32,7 @@ const RegisterPage = () => {
       const result = await createUser(email, password);
       await updateUserProfile(name, photo);
       setUser({ ...user, displayName: name, photoURL: photo });
-      navigate('/login');
+      navigate('/');
       console.log(result);
       toast.success('Register successful');
     } catch (error) {

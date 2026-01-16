@@ -44,7 +44,7 @@ const Navbar = () => {
               className='btn btn-ghost btn-circle avatar'
             >
               <div
-                className='w-10 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2 flex items-center justify-center'
+                className='w-8 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2 flex items-center justify-center'
                 title={user?.displayName}
               >
                 {user?.photoURL ? (
