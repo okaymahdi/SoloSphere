@@ -4,6 +4,7 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import carousel1 from '../../assets/images/carousel1.jpg';
 import carousel2 from '../../assets/images/carousel2.jpg';
 import carousel3 from '../../assets/images/carousel3.jpg';
+import Slide from './Slide';
 
 // Import Swiper styles
 import 'swiper/css';
@@ -12,7 +13,6 @@ import 'swiper/css/pagination';
 
 // import required modules
 import { Navigation, Pagination, Autoplay } from 'swiper/modules';
-import Slide from './Slide';
 
 const Carousel = () => {
   return (

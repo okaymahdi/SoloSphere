@@ -1,9 +1,10 @@
-import { Carousel } from '../../Components/Index';
+import { Carousel, TabsCategories } from '../../Components/Index';
 
 const HomePage = () => {
   return (
     <div>
       <Carousel />
+      <TabsCategories />
     </div>
   );
 };
