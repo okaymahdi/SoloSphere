@@ -1,3 +1,4 @@
+// server/src/index.js
 import dotenv from 'dotenv';
 dotenv.config();
 
@@ -5,14 +6,20 @@ import chalk from 'chalk';
 import ConnectDB from '../Config/ConnectDB.js';
 import app from './app.js';
 
-// Optional safety check
-if (!process.env.MONGO_USER || !process.env.MONGO_PASSWORD) {
+// Safety check for required env vars
+if (
+  !process.env.MONGO_USER ||
+  !process.env.MONGO_PASSWORD ||
+  !process.env.MONGO_CLUSTER_NAME ||
+  !process.env.MONGO_DATABASE_NAME
+) {
   console.error(chalk.red.bold('❌ MongoDB credentials missing in .env'));
   process.exit(1);
 }
 
 const startServer = async () => {
   try {
+    // 🔗 Connect to MongoDB once
     await ConnectDB();
 
     const PORT = process.env.PORT || 8080;
@@ -36,4 +43,5 @@ const startServer = async () => {
   }
 };
 
+// Start server
 startServer();
