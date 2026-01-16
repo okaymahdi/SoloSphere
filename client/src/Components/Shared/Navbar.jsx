@@ -4,7 +4,8 @@ import { AuthContext } from '../../Providers/AuthProvider';
 import { Link } from 'react-router';
 
 const Navbar = () => {
-  const { user } = useContext(AuthContext);
+  const { user, logOut } = useContext(AuthContext);
+
   return (
     <div className='navbar bg-base-100 shadow-sm container px-8 mx-auto'>
       <div className='flex-1'>
@@ -43,14 +44,22 @@ const Navbar = () => {
               className='btn btn-ghost btn-circle avatar'
             >
               <div
-                className='w-10 rounded-full'
-                title=''
+                className='w-10 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2 flex items-center justify-center'
+                title={user?.displayName}
               >
-                <img
-                  referrerPolicy='no-referrer'
-                  alt='User Profile Photo'
-                  src=''
-                />
+                {user?.photoURL ? (
+                  <img
+                    referrerPolicy='no-referrer'
+                    alt='User Profile Photo'
+                    src={user.photoURL}
+                  />
+                ) : (
+                  <span className='text-lg'>
+                    {user?.displayName
+                      ? user.displayName.slice(0, 2).toUpperCase()
+                      : '??'}
+                  </span>
+                )}
               </div>
             </div>
             <ul
@@ -70,7 +79,11 @@ const Navbar = () => {
                 <div>Bid Requests</div>
               </li>
               <li className='mt-2'>
-                <button className='bg-gray-200 block text-center'>
+                <button
+                  onClick={logOut}
+                  type='button'
+                  className='bg-gray-200 block text-center'
+                >
                   Logout
                 </button>
               </li>
