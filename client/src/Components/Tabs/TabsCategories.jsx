@@ -2,7 +2,7 @@ import { Tab, TabList, TabPanel, Tabs } from 'react-tabs';
 import 'react-tabs/style/react-tabs.css';
 import Card from './Card';
 
-const TabsCategories = () => {
+const TabsCategories = ({ jobs }) => {
   return (
     <Tabs>
       <div className='container px-8 py-10 mx-auto'>
@@ -22,17 +22,47 @@ const TabsCategories = () => {
           </TabList>
         </div>
 
-        <div className='flex justify-center'>
-          <TabPanel>
-            <Card />
-          </TabPanel>
-          <TabPanel>
-            <Card />
-          </TabPanel>
-          <TabPanel>
-            <Card />
-          </TabPanel>
-        </div>
+        {/* TabPanel for Web Development */}
+        <TabPanel>
+          <div className='grid grid-cols-1 gap-8 mt-8 xl:mt-16 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4'>
+            {jobs
+              .filter((job) => job.category === 'web development')
+              .map((job) => (
+                <Card
+                  key={job._id}
+                  job={job}
+                />
+              ))}
+          </div>
+        </TabPanel>
+
+        {/* TabPanel for Graphics Design */}
+        <TabPanel>
+          <div className='grid grid-cols-1 gap-8 mt-8 xl:mt-16 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4'>
+            {jobs
+              .filter((job) => job.category === 'graphics design')
+              .map((job) => (
+                <Card
+                  key={job._id}
+                  job={job}
+                />
+              ))}
+          </div>
+        </TabPanel>
+
+        {/* TabPanel for Digital Marketing */}
+        <TabPanel>
+          <div className='grid grid-cols-1 gap-8 mt-8 xl:mt-16 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4'>
+            {jobs
+              .filter((job) => job.category === 'digital marketing')
+              .map((job) => (
+                <Card
+                  key={job._id}
+                  job={job}
+                />
+              ))}
+          </div>
+        </TabPanel>
       </div>
     </Tabs>
   );

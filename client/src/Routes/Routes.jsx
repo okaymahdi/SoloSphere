@@ -11,6 +11,7 @@ const Routes = createBrowserRouter([
       {
         index: true,
         Component: HomePage,
+        loader: () => fetch(`${import.meta.env.VITE_API_URL}/jobs`),
       },
       {
         path: 'register',
