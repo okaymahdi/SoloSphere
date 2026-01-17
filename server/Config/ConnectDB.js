@@ -17,6 +17,7 @@ const ConnectDB = async () => {
         `\n🍃 ${chalk.green.bold('MongoDB')} Connected Successfully!`,
       );
       console.log(`🏷️ Cluster Host: ${chalk.yellow(conn.connection.host)}`);
+      console.log('CONNECTED DB =>', mongoose.connection.name);
       console.log(
         `🕒 Connected At: ${chalk.cyan(new Date().toLocaleString())}\n`,
       );

@@ -2,6 +2,7 @@
 import cors from 'cors';
 import dotenv from 'dotenv';
 import express from 'express';
+import jobRoutes from '../routes/job.routes.js';
 
 dotenv.config(); // .env ফাইল load
 
@@ -53,6 +54,8 @@ app.use(express.urlencoded({ limit: '10mb', extended: true })); // form-urlencod
 app.get('/', (req, res) => {
   res.json({ message: '✅ Server is running!' });
 });
+
+app.use('/jobs', jobRoutes);
 
 // =======================
 // ERROR HANDLER (Optional)
