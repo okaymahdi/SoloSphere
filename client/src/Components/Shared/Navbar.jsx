@@ -3,6 +3,27 @@ import { Link } from 'react-router';
 import Logo from '../../assets/images/logo.png';
 import { AuthContext } from '../../Providers/AuthProvider';
 
+const NavLinks = [
+  {
+    id: 1,
+    label: 'Home',
+    path: '/',
+    auth: 'all',
+  },
+  {
+    id: 2,
+    label: 'Jobs',
+    path: '/jobs',
+    auth: 'all',
+  },
+  {
+    id: 3,
+    label: 'Login',
+    path: '/login',
+    auth: 'guest',
+  },
+];
+
 const Navbar = () => {
   const { user, logOut } = useContext(AuthContext);
 
@@ -27,15 +48,13 @@ const Navbar = () => {
       </div>
       <div className='flex-none'>
         <ul className='menu menu-horizontal px-1'>
-          <li>
-            <Link to={'/'}>Home</Link>
-          </li>
-
-          {!user && (
-            <li>
-              <Link to={'login'}>Login</Link>
+          {NavLinks.filter(
+            (link) => link.auth === 'all' || (link.auth === 'guest' && !user),
+          ).map((link) => (
+            <li key={link.id}>
+              <Link to={link.path}>{link.label}</Link>
             </li>
-          )}
+          ))}
         </ul>
 
         {user && (

@@ -1,5 +1,9 @@
 import { useLoaderData } from 'react-router';
-import { Carousel, TabsCategories } from '../../Components/Index';
+import {
+  Carousel,
+  JobCategories,
+  TabsCategories,
+} from '../../Components/Index';
 
 const HomePage = () => {
   const jobs = useLoaderData();
